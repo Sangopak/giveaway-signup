@@ -22,6 +22,19 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## To deploy the app in EC2
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Use the below code (wip) in User Data section of EC2
+
+/#!/usr/bin/bash
+sudo yum update -y
+sudo yum install -y git
+curl --silent --location https://rpm.nodesource.com/setup_12.x | sudo bash -
+sudo yum install -y nodejs
+sudo npm install -g @angular/cli >/dev/null
+git clone https://github.com/Sangopak/giveaway-signup.git
+cd giveaway-signup
+ng build
+npm update
+sudo npm install rxjs@6.0.0 --save
+ng serve --host 0.0.0.0
