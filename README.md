@@ -26,7 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 Use the below code (wip) in User Data section of EC2
 
-/#!/usr/bin/bash
+#!/usr/bin/bash
 sudo yum update -y
 sudo yum install -y git
 curl --silent --location https://rpm.nodesource.com/setup_12.x | sudo bash -
