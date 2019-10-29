@@ -34,7 +34,7 @@ sudo yum install -y nodejs
 sudo npm install -g @angular/cli >/dev/null
 git clone https://github.com/Sangopak/giveaway-signup.git
 cd giveaway-signup
-ng build
-npm update
+sudo ng build
+sudo npm update
 sudo npm install rxjs@6.0.0 --save
-ng serve --host 0.0.0.0
+sudo ng serve --host 0.0.0.0 --port 80 --disable-host-check
