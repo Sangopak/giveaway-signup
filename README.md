@@ -32,9 +32,20 @@ sudo yum install -y git
 curl --silent --location https://rpm.nodesource.com/setup_12.x | sudo bash -
 sudo yum install -y nodejs
 sudo npm install -g @angular/cli >/dev/null
-git clone https://github.com/Sangopak/giveaway-signup.git
+sudo rm -rf giveaway-signup >/dev/null
+sudo git clone https://github.com/Sangopak/giveaway-signup.git
 cd giveaway-signup
 sudo ng build
 sudo npm update
 sudo npm install rxjs@6.0.0 --save
+npm install rxjs-compat
+sudo npm install bootstrap --save
+sudo npm install json-server --save-dev
+sudo npm install concurrently --save-dev
+---> Add this line in the package.json file
+"json-server":"json-server --watch mocks/data.json"
+"start-server":"concurrently --kill-others \"ng serve --host 0.0.0.0 --port 80 --disable-host-check\" \"npm run json-server --watch data/customers.json\"
+
+sudo npm run json-server --watch data/customers.json
+sudo npm run start-server
 sudo ng serve --host 0.0.0.0 --port 80 --disable-host-check

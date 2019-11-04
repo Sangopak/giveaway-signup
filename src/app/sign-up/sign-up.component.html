@@ -17,10 +17,17 @@
       </div>
       <div class="row">
         <div class="col-sm-5">
-          <button type="submit" class="btn btn-success">Add</button>
-          <button type="button" class="btn btn-info">Clear</button>
+          <button type="submit" class="btn btn-success" (click)="onSubmit()">Add</button>
+          <button type="button" class="btn btn-info" (click)="onClear()">Clear</button>
         </div>
       </div>
     </form>
+    <div clas="row">
+      <ul>
+        <li *ngFor="let customer of customers" >
+          FirstName: {{customer.firstName}}, LastName: {{customer.lastName}}, Email ID: {{customer.emailId}}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
