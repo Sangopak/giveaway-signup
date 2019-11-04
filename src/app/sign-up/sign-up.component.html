@@ -23,11 +23,21 @@
       </div>
     </form>
     <div clas="row">
-      <ul>
-        <li *ngFor="let customer of customers" >
-          FirstName: {{customer.firstName}}, LastName: {{customer.lastName}}, Email ID: {{customer.emailId}}
-        </li>
-      </ul>
+      <h3 class="text-center">List of customers</h3>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">First Name</th><th scope="col">Last Name</th><th scope="col">Email Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr mdbTableCol *ngFor="let customer of customers">
+          <td>{{customer.firstName}}</td>
+          <td>{{customer.lastName}}</td>
+          <td>{{customer.emailId}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
