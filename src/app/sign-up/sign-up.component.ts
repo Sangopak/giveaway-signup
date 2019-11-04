@@ -9,6 +9,12 @@ import {CustomerService} from '../customer.service';
 })
 export class SignUpComponent implements OnInit {
   customers: Customer[];
+  firstName: string;
+  lastName: string;
+  emailId: string;
+  id: number;
+  errorMessage: string;
+  customer: Customer;
 
   constructor(private customerService: CustomerService) { }
   ngOnInit() {
@@ -21,10 +27,30 @@ export class SignUpComponent implements OnInit {
    }
 
   onSubmit(){
-    console.log("Customer data added");
+    this.customer = new Customer(this.firstName,this.lastName,this.emailId);
+     this.customerService.addCustomers(this.customer)
+	     .subscribe( customer => {
+					                  this.fetchCustomers();
+                            this.reset();
+                            this.id = Math.floor((Math.random() * 1000) + 1);
+		                        this.firstName = customer.firstName;
+		                        this.lastName = customer.lastName;
+		                        this.emailId = customer.emailId;
+					  },
+                     error => this.errorMessage = <any>error);
+    console.log("Customer data added with the data as !!");
+    console.log(this.customer);
+  }
+
+  reset(){
+    this.firstName = null;
+    this.lastName = null;
+    this.emailId = null;
+    this.errorMessage = null;
   }
 
   onClear(){
+    this.reset();
     console.log("Data cleared");
   }
 }
